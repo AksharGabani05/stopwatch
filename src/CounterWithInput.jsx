@@ -1,36 +1,42 @@
 import React, { useState, useEffect } from 'react';
 
-function CounterWithInput() {
-  // Initialize state variables for the count and user-defined number
+function Counter() {
+ 
   const [count, setCount] = useState(0);
-  const [userNumber, setUserNumber] = useState(1);
+  const [Number, setNumber] = useState(1);
 
-  // Use useEffect to update the count whenever the userNumber changes
+  
   useEffect(() => {
-    setCount(0); // Reset the count when userNumber changes
-  }, [userNumber]);
+    setCount(0); 
+  }, [Number]);
 
-  // Function to increment the count
-  const increment = () => {
-    setCount(count + userNumber);
+  
+  const Add = () => {
+    setCount(count + Number);
   };
-  const dicriment = () => {
-    setCount(count - userNumber);
+  
+  
+  const Remove = () => {
+    setCount(count - Number);
+  };
+
+  
+  const buttonStyle = {
+    backgroundColor: count > 50 ? 'black' : 'red',
   };
 
   return (
     <div>
-      <h1>Counter with User-Defined Number</h1>
       <p>Count: {count}</p>
       <input
         type="number"
-        value={userNumber}
-        onChange={(e) => setUserNumber(parseInt(e.target.value, 10))}
+        value={Number}
+        onChange={(e) => setNumber(parseInt(e.target.value, 10))}
       />
-      <button onClick={increment}>Increment</button>
-      <button onClick={dicriment}>dicriment</button>
+      <button onClick={Add} style={buttonStyle}>Add</button>
+      <button onClick={Remove} style={buttonStyle}>Remove</button>
     </div>
   );
 }
 
-export default CounterWithInput;
+export default Counter;
